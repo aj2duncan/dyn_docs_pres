@@ -1,0 +1,116 @@
+---
+title: "Dynamic Documents in R"
+author: "Andrew Duncan"
+date: ""
+output: 
+  ioslides_presentation:
+    css: sruc.css
+    fig_height: 5
+    fig_width: 7
+    highlight: haddock
+    widescreen: true
+    logo: Images/SRUC.png
+---
+
+```{r setup, include=FALSE, cache = FALSE}
+knitr::opts_chunk$set(echo = F, eval = T, comment = NA, warning = F, message = NA)
+knitr::knit_hooks$set(wrapper = function(before, options, envir) {
+  if (before) {
+    sprintf('    ```{r %s}\n', options$params.src)
+  } else '    ```\n'
+})
+```
+
+## Our Normal Workflow
+
+- Load data into R.
+- Analyse data in R.
+- Produce output results (table/plot)
+- Type everything up in Word (maybe tables in Excel).
+- There might be an easier way.
+
+
+## Dynamic Documents in R
+
+- Easily produce Word, PDF, HTML and presentations from inside R. 
+- No copying and pasting images.
+- Include code or not, it is up to you.
+- Want to run the same analysis on different data - just change the input data. 
+
+
+## Reproducible Research
+
+- One of the central ideas of this is reproducible research. 
+- Word and Excel normally involve a lot of pointing and clicking - hard to reproduce.
+- Introducing R Markdown.
+- Possible to write entire LaTeX documents from within R but LaTeX much harder to learn thatn R Markdown.
+
+
+## R Markdown
+
+- Developed by R Studio - works with base R too.
+- Takes markdown (type of plain text document) and adds a lot of extras.
+- **Knits** document into your chosen format. Using `knitr` package.
+
+- We'll run through a few basics of markdown and then see some examples.
+
+## Markdown Basics
+
+- Markdown lets you do a lot of what you would do in Word. 
+- Uses special syntax.
+- For example: 
+    + Bold `**this is bold text**` **this is bold text**
+    + Italic `*this is italic text*` *this is italic text*
+    + Superscript `R^2^` R^2^
+    + Subscript `x~2~` x~2~
+    + LaTeX `$$\int_1^2 \frac{1}{x} \: \mathrm{d}x$$` $$\int_1^2 \frac{1}{x} \: \mathrm{d}x$$
+
+
+## R in Markdown
+
+- Can also add R code directly into document (including plots) either stand alone or inline. 
+- The same goes for plots. We can include the R code in the output if we wish.
+
+```{r, echo = T, eval = F}
+library(ggplot2)
+ggplot(mtcars, aes(x = hp, y = mpg)) + 
+  geom_point(aes(colour = factor(cyl))) + 
+  geom_smooth() + 
+  guides(colour = guide_legend(title = "Cylinder"))
+```
+
+## R in Markdown
+
+```{r}
+library(ggplot2)
+ggplot(mtcars, aes(x = hp, y = mpg)) + 
+  geom_point(aes(colour = factor(cyl))) + 
+  geom_smooth() + 
+  guides(colour = guide_legend(title = "Cylinder"))
+```
+
+## Rmarkdown Examples
+
+- I'll work through a couple of examples in RStudio first then base R.
+- Note: 
+    + To make a PDF you need LaTeX installed (Open Source). 
+    + To make a Word doc you need Word/Libre Office installed.
+
+
+## Compile Notebooks
+
+- If you've just been plain old R code - you can make documents too.
+- Include a YAML header and particular types of comments.
+- Here's an example.
+
+
+## Summary
+
+- For Rmarkdown create an `.Rmd` file. 
+- Edit to your heart's content.
+- Click `knit` button in RStudio or
+```{r ,eval = F, echo = T} 
+rmarkdown::render(input = "my_file.Rmd", output_format = "word_document")
+```
+- There is a lot more that can be done ...
+- Any questions?

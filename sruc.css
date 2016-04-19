@@ -1,0 +1,23 @@
+td, th {
+  width: 4rem;
+  height: 2rem;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+td, tr {background:white; background-color:white; color: black;}
+
+th {
+  background: black; 
+  border-color: white;
+}
+body {
+  padding: 1rem;
+}
+
+/* remove slide numbers */
+slides > slide:not(.nobackground):after {
+  content: '';
+}
+
+
