@@ -1,0 +1,31 @@
+---
+title: "Notes"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      eval = TRUE, 
+                      comment = NA, 
+                      warning = FALSE,
+                      message = FALSE)
+```
+
+## Points to Note During Dynamic Documents Presentation
+
+- Demo basic R markdown. Make sure to run through the following points:
+      + YAML Header.
+      + Initial knitr set up for code chunks. 
+      + How to knit file - including changing format.
+          * For Word document - change something and save as template. reference_docx: template.docx.
+          * For PDF everything done through LaTeX commands.
+          * For HTML you can use css.
+      + How to add a code chunk.
+- Move to more complicated version.
+      + Can have commands for compilation to everything. Word and HTML won't understand LaTeX, Word and LaTeX won't understand css.
+      + Inline R.
+      + Using variables to make it easier to change things.
+- How to render without RStudio - `render_docs.r`. YAML header and different types of comments:
+      + `#` Normal R comment.
+      + `#'` Is interpreted as R markdown
+      + `#+` Is a knit chunk option

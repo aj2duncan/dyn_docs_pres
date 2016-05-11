@@ -29,26 +29,28 @@ knitr::knit_hooks$set(wrapper = function(before, options, envir) {
 - Type everything up in Word (maybe tables in Excel).
 - There might be an easier way.
 
-
-## Dynamic Documents in R
-
-- Easily produce Word, PDF, HTML and presentations from inside R. 
-- No copying and pasting images.
-- Include code or not, it is up to you.
-- Want to run the same analysis on different data - just change the input data. 
-
-
 ## Reproducible Research
 
-- One of the central ideas of this is reproducible research. 
+- Make your work reproducible (for yourself and for others). 
 - Word and Excel normally involve a lot of pointing and clicking - hard to reproduce.
-- Introducing R Markdown.
-- Possible to write entire LaTeX documents from within R but LaTeX much harder to learn thatn R Markdown.
+- LaTeX might be overkill. Can't run R in LaTeX editor.
+- Maybe R Markdown would be of use.
+
+## R Markdown
+
+- Easily produce Word, PDF, HTML and presentations from inside R. 
+- No copying and pasting images. 
+- Include your code (or don't - it is up to you).
+- Easily run the same analysis on multiple datasets (formatted the same).
 
 
 ## R Markdown
 
 - Developed by R Studio - works with base R too.
+```{r install_packages, echo = T, eval = F}
+install.packages("rmarkdown")
+library(rmarkdown)
+```
 - Takes markdown (type of plain text document) and adds a lot of extras.
 - **Knits** document into your chosen format. Using `knitr` package.
 
@@ -57,13 +59,13 @@ knitr::knit_hooks$set(wrapper = function(before, options, envir) {
 ## Markdown Basics
 
 - Markdown lets you do a lot of what you would do in Word. 
-- Uses special syntax.
+- Rather than point and clicking uses special syntax.
 - For example: 
-    + Bold `**this is bold text**` **this is bold text**
-    + Italic `*this is italic text*` *this is italic text*
-    + Superscript `R^2^` R^2^
-    + Subscript `x~2~` x~2~
-    + LaTeX `$$\int_1^2 \frac{1}{x} \: \mathrm{d}x$$` $$\int_1^2 \frac{1}{x} \: \mathrm{d}x$$
+    + Bold: `**this is bold text**` **this is bold text**
+    + Italic: `*this is italic text*` *this is italic text*
+    + Superscript: `R^2^` R^2^
+    + Subscript: `x~2~` x~2~
+    + LaTeX: `$$\int_1^2 \frac{1}{x} \: \mathrm{d}x$$` $$\int_1^2 \frac{1}{x} \: \mathrm{d}x$$
 
 
 ## R in Markdown
@@ -96,14 +98,6 @@ ggplot(mtcars, aes(x = hp, y = mpg)) +
     + To make a PDF you need LaTeX installed (Open Source). 
     + To make a Word doc you need Word/Libre Office installed.
 
-
-## Compile Notebooks
-
-- If you've just been plain old R code - you can make documents too.
-- Include a YAML header and particular types of comments.
-- Here's an example.
-
-
 ## Summary
 
 - For Rmarkdown create an `.Rmd` file. 
@@ -112,5 +106,6 @@ ggplot(mtcars, aes(x = hp, y = mpg)) +
 ```{r ,eval = F, echo = T} 
 rmarkdown::render(input = "my_file.Rmd", output_format = "word_document")
 ```
-- There is a lot more that can be done ...
+- Just scratched the surface - <a href = "http://rmarkdown.rstudio.com/" target = "_blank">http://rmarkdown.rstudio.com/</a>.
+- All notes and documents available on Github  - <a href = "https://github.com/aj2duncan/dyn_docs_pres"> https://github.com/aj2duncan/dyn_docs_pres </a>
 - Any questions?
