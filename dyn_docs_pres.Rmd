@@ -97,6 +97,17 @@ ggplot(mtcars, aes(x = hp, y = mpg)) +
 - Note: 
     + To make a PDF you need LaTeX installed (Open Source). 
     + To make a Word doc you need Word/Libre Office installed.
+    
+## For those not actually here...
+
+- First we looked at a brand new Rmarkdown file:
+    + In RStudio - File &#8594; New File &#8594; R markdown ...
+- A more complicated examples is `dyn_docs_demo.Rmd` where R variables are used in the text so only need to be changed in one place.
+- This can be compiled by clicking in RStudio or using `render_docs.r`.
+- Can also make any R code into a document. Example is `compile_demo.r`. This can be compiled using:
+    + In RStudio - File &#8594; Compile Notebook (needs to be a `.r` file)
+    + Or `rmarkdown::render("compile_demo.r")`
+
 
 ## Summary
 

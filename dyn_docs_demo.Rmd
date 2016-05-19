@@ -3,20 +3,20 @@ title: "Demonstration Dynamic Document"
 author: "Andrew Duncan"
 date: ''
 output:
-  html_document:
-    fig_height: 6
-    fig_width: 7
-    toc: yes
-    toc_float: yes
-    code_folding: hide
-  pdf_document:
-    fig_caption: yes
-    fig_height: 6
-    fig_width: 7
   word_document:
     fig_caption: yes
     fig_height: 6
     fig_width: 7
+  pdf_document:
+    fig_caption: yes
+    fig_height: 6
+    fig_width: 7
+  html_document:
+    code_folding: hide
+    fig_height: 6
+    fig_width: 7
+    toc: yes
+    toc_float: yes
 ---
 
 ```{r setup, include=FALSE}
@@ -25,6 +25,10 @@ knitr::opts_chunk$set(echo = TRUE, # should the R code used be printed
                       comment = NA, # Nothing preceding results
                       message = F, # Don't print any messages from R
                       warning = F) # Don't print any warnings from R
+
+# Variables to change
+my_fav_team = "BOS" # my favourite team - we'll change this to NYY later 
+num_hr = 400 # Number of home runs to examine later
 ```
 
 # Let's Play Ball
@@ -44,9 +48,7 @@ Batting = tbl_df(battingStats())
 Teams = tbl_df(Teams)
 Teams = select(Teams, yearID, teamID, franchID)
 Batting = left_join(Batting, Teams)
-my_fav_team = "BOS"
 team_name = TeamsFranchises$franchName[TeamsFranchises$franchID == my_fav_team]
-num_hr = 400 # Number of home runs to examine later
 ```
 
 Then we choose to examine my favourite team - the `r team_name`. 
@@ -71,13 +73,14 @@ ggplot(data = ba_year, mapping = aes(x = yearID, y = average_ba)) +
   ggtitle(paste("Mean Batting Average of the", team_name, sep = " "))
 ```
 
+\newpage
 ## More than `r num_hr` Home Runs
 
 We can tabulate the players who have hit `r num_hr` or more home runs for the `r team_name`. Note this does not include home runs hit for other teams - just the `r team_name`.
 
 ```{r collate_home_runs, results = 'asis'}
 # Gather the players 
-four_hundred = my_team %>%
+home_runs = my_team %>%
   group_by(playerID) %>%
   summarise(total_hr = sum(HR)) %>%
   filter(total_hr >= num_hr) 
@@ -87,12 +90,12 @@ players = tbl_df(Master) %>%
   select(playerID, nameFirst, nameLast)
 
 # join dataframes together and output
-four_hundred = left_join(four_hundred, players) %>%
+home_runs = left_join(home_runs, players) %>%
   mutate(Player = paste(nameFirst, nameLast, sep = " ")) %>%
   select(Player, total_hr) %>% # reordering columns
   arrange(desc(total_hr))
 
 # print table
-knitr::kable(four_hundred, col.names = c("Player", "Total Number of Home Runs"))
+knitr::kable(home_runs, col.names = c("Player", "Total Number of Home Runs"))
 ```
 

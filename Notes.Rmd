@@ -19,13 +19,16 @@ knitr::opts_chunk$set(echo = FALSE,
       + How to knit file - including changing format.
           * For Word document - change something and save as template. reference_docx: template.docx.
           * For PDF everything done through LaTeX commands.
-          * For HTML you can use css.
+          * For HTML you can use html/css.
       + How to add a code chunk.
 - Move to more complicated version.
       + Can have commands for compilation to everything. Word and HTML won't understand LaTeX, Word and LaTeX won't understand css.
       + Inline R.
       + Using variables to make it easier to change things.
-- How to render without RStudio - `render_docs.r`. YAML header and different types of comments:
+- How to render without RStudio - `render_docs.r`. 
+
+- Compile Notebook - `compile_demo.r`,
+      + YAML header and different types of comments:
       + `#` Normal R comment.
       + `#'` Is interpreted as R markdown
       + `#+` Is a knit chunk option
