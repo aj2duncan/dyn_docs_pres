@@ -3,20 +3,20 @@ title: "Demonstration Dynamic Document"
 author: "Andrew Duncan"
 date: ''
 output:
-  word_document:
-    fig_caption: yes
-    fig_height: 6
-    fig_width: 7
-  pdf_document:
-    fig_caption: yes
-    fig_height: 6
-    fig_width: 7
   html_document:
     code_folding: hide
     fig_height: 6
     fig_width: 7
     toc: yes
     toc_float: yes
+  pdf_document:
+    fig_caption: yes
+    fig_height: 6
+    fig_width: 7
+  word_document:
+    fig_caption: yes
+    fig_height: 6
+    fig_width: 7
 ---
 
 ```{r setup, include=FALSE}
@@ -27,8 +27,8 @@ knitr::opts_chunk$set(echo = TRUE, # should the R code used be printed
                       warning = F) # Don't print any warnings from R
 
 # Variables to change
-my_fav_team = "BOS" # my favourite team - we'll change this to NYY later 
-num_hr = 400 # Number of home runs to examine later
+my_fav_team = "NYY" # my favourite team - we'll change this to NYY later 
+num_hr = 300 # Number of home runs to examine later
 ```
 
 # Let's Play Ball
@@ -73,7 +73,6 @@ ggplot(data = ba_year, mapping = aes(x = yearID, y = average_ba)) +
   ggtitle(paste("Mean Batting Average of the", team_name, sep = " "))
 ```
 
-\newpage
 ## More than `r num_hr` Home Runs
 
 We can tabulate the players who have hit `r num_hr` or more home runs for the `r team_name`. Note this does not include home runs hit for other teams - just the `r team_name`.

@@ -70,7 +70,7 @@ library(rmarkdown)
 
 ## R in Markdown
 
-- Can also add R code directly into document (including plots) either stand alone or inline. 
+- Can also add R code directly into document either as "chunks" or inline. 
 - The same goes for plots. We can include the R code in the output if we wish.
 
 ```{r, echo = T, eval = F}
